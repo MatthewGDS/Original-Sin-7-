@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Stats.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Game over.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="PlayerStats" instance=ExtResource( 1 )]
+max_health = 25
+
+[node name="Game over" type="Area2D" parent="." index="0"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game over" index="0"]
+shape = SubResource( 1 )
+
+[connection signal="no_health" from="." to="Game over" method="_on_PlayerStats_no_health"]
